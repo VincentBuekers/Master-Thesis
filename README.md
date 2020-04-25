@@ -1,8 +1,4 @@
 # A Support Vector Machine embedded Random Forest model
 ## Large-scale applications
 
-This is a model framework for SVM classification and regression that attempts to reduce the training time of support vector machines.
-
-In libsvm the computational complexity ranges between  O(d x n^2) and O(d x n^3), where d=dimesion of input space and n the number of training samples.
-
-To that end, an extremely randomized decision tree is implemented to partition the data into subsets. That is, in each tree the leaf nodes correspond to a data partition. SVM training and testing is then conducted on the subsamples. This approach is then generalized by means of an ensemble of SVM embedded trees.
+This is a model framework for SVM classification and regression that attempts to reduce the training time of support vector machines by making use of local linear SVM models. Linear implementations allow to make use of computationally efficient solvers such as LibLinear and SGD. Local regions of the input space are obtained by means of a decision tree. That is, the leaf nodes of the tree are used as non-overlapping subsets of the data. More specifically, a totally randomized tree (Geurts et al., 2006) is used to obtain subsets in a entirely randomized fashion. Each of these subsets serves as a training sample for a linear SVM classifier or regressor, yielding a collection of submodels each corresponding to particular region. As to protect the overarching model from a potentially unsuitable partition, multiple partitions are generated. 
