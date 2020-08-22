@@ -1,4 +1,1 @@
-# A Support Vector Machine embedded Random Forest model
-## Large-scale applications
 
-This is a model framework for SVM classification and regression that attempts to reduce the training time of support vector machines by making use of local linear SVM models. Linear implementations allow to make use of computationally efficient solvers such as LibLinear and SGD. Local regions of the input space are obtained by means of a decision tree. That is, the leaf nodes of the tree are used as non-overlapping subsets of the data. More specifically, a totally randomized tree (Geurts et al., 2006) is used to obtain subsets in a entirely randomized fashion. Each of these subsets serves as a training sample for a linear SVM classifier or regressor, yielding a collection of submodels each corresponding to particular region. As to protect the overarching model from a potentially unsuitable partition, multiple partitions are generated. 
